@@ -14,47 +14,40 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class HomeComponent implements OnInit {
   carouselOptions1: OwlOptions = {
     items: 4, 
-    dots: false,  
+    loop: true,
+    autoplay: true,
     center: true,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    animateOut: 'fadeOut',
+    dots: false,
     autoHeight: true,
+    autoWidth: true,
+    animateOut: 'fadeOut'
   }
   carouselOptions: OwlOptions = 
   {
     items: 1, 
-    dots: false, 
+    loop: true,
+    autoplay: true,
     center: true,
-    loop:true,
-    margin:10,
-    autoplay:true,
-    animateOut: 'fadeOut',
+    dots: false,
     autoHeight: true,
+    autoWidth: true,
+    animateOut: 'fadeOut'
   }
   images: any[] = [];
   default = new Array(4);
 
   constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService, private activeRoute: ActivatedRoute) {
-  
-    // this.productService.getAllProducts().subscribe(res => {
-    //   this.images = res;
-    // });
-    // this.images = this.activeRoute.snapshot.data['data'];
-    // console.log(this.activeRoute.snapshot.data['data']);
     iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
   }
 
   ngOnInit() {
     this.productService.getAllProducts().subscribe(res => {
       this.images = res;
-      console.log(this.images);
     });
   }
 
   productHome(id: string) {
     this.router.navigate(['product/'+id]);
-    }
+  }
 
 }

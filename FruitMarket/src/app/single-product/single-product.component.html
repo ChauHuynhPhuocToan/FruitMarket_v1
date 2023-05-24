@@ -128,14 +128,13 @@
             <div class="fab">
                 <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>
             </div>
-            <!-- <img class="productImg" mat-card-image src="{{item.image}}" alt="Photo of a Shiba Inu"> -->
-            <!-- <owl-owl-carousel-o [options]="carouselOptions" [items]="item.image">
-                <div class="item" *ngFor="let image of item.image; let i = index">
+            <owl-carousel-o [options]="carouselOptions">
+                <ng-template class="carousel" carouselSlide [id]="item.id" *ngFor="let image of item.image; let i = index">
                     <div class="thumbnail-image">
                         <img [src]="image" class="productImg" mat-card-image />
                     </div>
-                </div>
-            </owl-carousel-o> -->
+                </ng-template>
+            </owl-carousel-o>
             <mat-card-content>
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">

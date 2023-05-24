@@ -24,9 +24,17 @@
         </div>
         <br>
         <div class="filters">
-            Price range
-            <mat-slider style="width: 100%" color="primary" tickInterval="auto" thumbLabel min="0" max="1000" step="100"
-                value="100"></mat-slider>
+            <mat-slider
+            style="width: 100%;"
+            class="example-margin"
+            [disabled]="disabled"
+            [max]="max"
+            [min]="min"
+            [step]="step"
+            [discrete]="thumbLabel"
+            [showTickMarks]="showTicks">
+            <input matSliderThumb>
+            </mat-slider>
         </div>
     </div>
     <div class="body">
@@ -50,21 +58,13 @@
             <div class="fab">
                 <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>
             </div>
-            <!-- <img class="productImg" mat-card-image [src]="item.image[0]" alt="Photo of a Shiba Inu"> -->
-            <owl-carousel-o>
-                <ng-template class="carousel" carouselSlide [id]="item.id">
-                    <div class="thumbnail-image">
-                        <img [src]="item.image[0]" class="productImg" mat-card-image />
-                    </div>
-                </ng-template>
-            </owl-carousel-o>
-            <!-- <owl-carousel-o [options]="carouselOptions" [items]="item.image">
-                <div class="item" *ngFor="let image of item.image; let i = index">
+            <owl-carousel-o [options]="carouselOptions">
+                <ng-template class="carousel" carouselSlide [id]="item.id" *ngFor="let image of item.image; let i = index">
                     <div class="thumbnail-image">
                         <img [src]="image" class="productImg" mat-card-image />
                     </div>
-                </div>
-            </owl-carousel-o> -->
+                </ng-template>
+            </owl-carousel-o>
             <mat-card-content>
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">

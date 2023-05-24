@@ -16,14 +16,23 @@ export class ProductsComponent implements OnInit {
   carouselOptions: OwlOptions = 
   {
     items: 1, 
-    dots: false, 
-    loop:true,
-    margin:10,
-    autoplay:true,
-    animateOut: 'fadeOut',
-    autoHeight: true
-    
-}
+    loop: true,
+    autoplay: true,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    animateOut: 'fadeOut'
+  }
+
+  disabled = false;
+  max = 100;
+  min = 0;
+  showTicks = false;
+  step = 1;
+  thumbLabel = false;
+  value = 0;
+
   products: any[] = [];
   default = new Array(6);
   
@@ -32,7 +41,7 @@ export class ProductsComponent implements OnInit {
     this.productService.getAllProducts().subscribe(res => {
       this.products = res;
     });
-   }
+  }
 
   private _transformer = (node: FoodNode, level: number) => {
     return {
@@ -41,23 +50,22 @@ export class ProductsComponent implements OnInit {
       level: level,
     };
   }
+
   ngOnInit() {
   }
-  treeControl = new FlatTreeControl<ExampleFlatNode>(
-    node => node.level, node => node.expandable);
 
-treeFlattener = new MatTreeFlattener(
-    this._transformer, node => node.level, node => node.expandable, node => node.children);
+  treeControl = new FlatTreeControl<ExampleFlatNode>(node => node.level, node => node.expandable);
 
-dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+  treeFlattener = new MatTreeFlattener(this._transformer, node => node.level, node => node.expandable, node => node.children);
+
+  dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
 
 
-hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
+  hasChild = (_: number, node: ExampleFlatNode) => node.expandable;
   
-productHome(id: string) {
-  this.router.navigate(['product/'+id]);
-}
-
+  productHome(id: string) {
+    this.router.navigate(['../product', id]);
+  }
 
 }
 
@@ -83,16 +91,16 @@ const TREE_DATA: FoodNode[] = [
   }, {
     name: 'Banana',
     children: [
-      {name: 'Shirt'},
-      {name: 'Shoes'},
-      {name: 'Jeans'},
+      {name: 'Chingan banana'},
+      {name: 'Lacatan banana'},
+      {name: 'Lady Finger banana (Sugar banana)'},
     ]
   },{
     name: 'Mango',
     children: [
-      {name: 'Shirt'},
-      {name: 'Shoes'},
-      {name: 'Jeans'},
+      {name: 'Alampur Baneshan'},
+      {name: 'Alphonso'},
+      {name: 'Amrapali'},
     ]
   },
 ];

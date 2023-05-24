@@ -27,10 +27,10 @@
             <div class="fab">
                 <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>
             </div>
-            <owl-carousel-o>
-                <ng-template id="carousel" class="carousel" carouselSlide [id]="item.id">
+            <owl-carousel-o [options]="carouselOptions">
+                <ng-template class="carousel" carouselSlide [id]="item.id" *ngFor="let image of item.image; let i = index">
                     <div class="thumbnail-image">
-                        <img [src]="item.image[0]" class="productImg" mat-card-image />
+                        <img [src]="image" class="productImg" mat-card-image />
                     </div>
                 </ng-template>
             </owl-carousel-o>

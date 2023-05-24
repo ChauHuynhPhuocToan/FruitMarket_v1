@@ -12,13 +12,15 @@ export class SingleProductComponent implements OnInit {
   carouselOptions: OwlOptions = 
   {
     items: 1, 
-    dots: false, 
-    loop:true,
-    margin:10,
-    autoplay:true,
-    animateOut: 'fadeOut',
-    autoHeight: true
-}
+    loop: true,
+    autoplay: true,
+    center: true,
+    dots: false,
+    autoHeight: true,
+    autoWidth: true,
+    animateOut: 'fadeOut'
+  }
+  
   simillarProducts: any[] = [];
   product: any;
   constructor(private productService: ProductService, private route: ActivatedRoute) {
