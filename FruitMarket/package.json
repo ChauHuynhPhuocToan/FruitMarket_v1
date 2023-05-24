@@ -10,14 +10,21 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "^16.0.0",
+    "@angular/animations": "^16.0.2",
+    "@angular/cdk": "^16.0.1",
     "@angular/common": "^16.0.0",
     "@angular/compiler": "^16.0.0",
     "@angular/core": "^16.0.0",
     "@angular/forms": "^16.0.0",
+    "@angular/material": "^16.0.1",
     "@angular/platform-browser": "^16.0.0",
     "@angular/platform-browser-dynamic": "^16.0.0",
     "@angular/router": "^16.0.0",
+    "json-server": "^0.17.3",
+    "ng-image-slider": "^7.0.0",
+    "ngx-owl-carousel-o": "^16.0.0",
+    "ngx-skeleton-loader": "^7.0.0",
+    "ngx-skltn": "^2.2.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
@@ -33,6 +40,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "ngx-skltn": "^2.2.2",
     "typescript": "~5.0.2"
   }
 }
