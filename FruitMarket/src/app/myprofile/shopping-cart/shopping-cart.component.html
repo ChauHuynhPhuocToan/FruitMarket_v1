@@ -1,4 +1,4 @@
-<div class="shopping-cart-conatiner" *ngIf="cart && cart.length > 0; else cartEmpty">
+<div class="shopping-cart-conatiner" *ngIf="cart && cart.items.length > 0; else cartEmpty">
 
     <div class="title">
         My Cart
@@ -26,7 +26,7 @@
         </div>
     </div>
 
-    <div class="body" *ngFor="let item of cart">
+    <div class="body" *ngFor="let item of cart.items">
 
         <div class="img">
 
@@ -37,7 +37,7 @@
             <p> Far far away, behind the word mountains, far from the countries</p>
         </div>
         <div class="price">
-            $4.90
+            ${{ item.price }}
         </div>
         <div class="quantity">
             <mat-icon fontSet="material-icons-outlined" class="close-icon"
@@ -48,7 +48,7 @@
                 (click)="increaseQuantity(item)">add</mat-icon>
         </div>
         <div class="total">
-            $4.90
+            ${{ item.totalPrice }}
 
         </div>
         <div class="close">
@@ -62,15 +62,15 @@
         <table style="width: 100%">
             <tr>
                 <td>Subtotal</td>
-                <td>$20.60</td>
+                <td>${{cart.subtotal}}</td>
             </tr>
             <tr>
                 <td>Delivery</td>
-                <td>$0.60</td>
+                <td>${{shippingCost}}</td>
             </tr>
             <tr>
                 <td>Discount</td>
-                <td>$0.60</td>
+                <td>${{discount}}</td>
             </tr>
             <tr>
                 <td colspan="2">
@@ -80,7 +80,7 @@
             <tr>
 
                 <td>Total</td>
-                <td><b>$10.60</b></td>
+                <td><b>${{cart.total}}</b></td>
             </tr>
         </table>
         <div class="checkout-button">

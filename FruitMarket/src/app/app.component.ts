@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { CartService } from './services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,12 @@ export class AppComponent {
     this.drawer.toggle();
   }
 
-   sideNavMenu = [
-     {
-       title: 'home',
-       link: '/home'
-     },
-     {
+  sideNavMenu = [
+    {
+      title: 'home',
+      link: '/home'
+    },
+    {
       title: 'products',
       link: '/products'
     },
@@ -31,6 +32,9 @@ export class AppComponent {
       title: 'contact-us',
       link: ''
     }
-    
-   ];
+  ];
+
+  constructor(private cartService: CartService) {
+    this.cartService.initialCart();
   }
+}

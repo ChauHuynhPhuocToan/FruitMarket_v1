@@ -54,13 +54,13 @@
                 </ngx-skeleton-loader> -->
             </mat-card>
         </ng-container>
-        <mat-card class="example-card" *ngFor="let item of products" (click)="productHome(item.id)">
+        <mat-card class="example-card" *ngFor="let item of products">
             <div class="fab">
                 <mat-icon fontSet="material-icons-outlined">favorite_border</mat-icon>
             </div>
             <owl-carousel-o [options]="carouselOptions">
                 <ng-template class="carousel" carouselSlide [id]="item.id" *ngFor="let image of item.image; let i = index">
-                    <div class="thumbnail-image">
+                    <div class="thumbnail-image" (click)="productHome(item.id)">
                         <img [src]="image" class="productImg" mat-card-image />
                     </div>
                 </ng-template>
@@ -68,8 +68,8 @@
             <mat-card-content>
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-weight: bold; font-size: 14px;">$120.00</span>
-                    <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
+                    <span style="font-weight: bold; font-size: 14px;">${{ item.price }}</span>
+                    <mat-icon fontSet="material-icons-outlined" (click)="addToCart(item)">shopping_cart</mat-icon>
                 </div>
             </mat-card-content>
         </mat-card>

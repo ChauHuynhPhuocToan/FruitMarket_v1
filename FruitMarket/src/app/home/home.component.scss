@@ -10,6 +10,7 @@
     margin-top: 35px;
     display: flex;
 }
+
 .search-text {
     padding: 10px;
     flex: 20;
@@ -17,22 +18,27 @@
     color: #656565;
     line-height: 1.5;
 }
+
 .icon {
     border-right: 1px solid lightgrey;
     margin: 5px;
 }
+
 .icon, .close {
     flex: 1;
     color: #656565;
 }
+
 .leftIcon {
     padding: 2px;
     padding-left: 7px;
 }
+
 .products-container {
     background: #f8f9fa !important;
     position: relative;
 }
+
 .title {
     padding-left: 10px;
     position: relative;
@@ -42,30 +48,37 @@
     margin-left: 2%;
     margin-right: 2%;
 }
+
 .viewAllBtn {
     float: right;
     margin-top: 10px;
     border-radius: 0;
 }
+
 .body {
     display: flex;
     margin-top: 10px;
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .body .productImg {
     // padding: 18px;
     width: 200px;
     height: 200px;
     transform: translateX(12%);
+    cursor: pointer;
 }
+
 .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('../../assets/dog.jpg');
     background-size: cover;
 }
+
 .mobile-view {
     display: none;
 }
+
 .mobile-view .mobile-card {
     width: 48%;
     text-align: center;
@@ -76,6 +89,10 @@
 owl-carousel-o {
     display: flex;
     justify-content: center;
+}
+
+mat-icon {
+    cursor: pointer;
 }
 
 @media (max-width: 1080px) {

@@ -24,6 +24,7 @@
     font-size: 12px;
     background: transparent;
 }
+
 .body{
     flex: 4;
     display: flex;
@@ -31,17 +32,23 @@
     justify-content: center;
     flex-wrap: wrap;
 }
+
 .body .productImg {
     width: 200px;
     height: 200px;
     transform: translateX(12%);
 }
 
+mat-icon {
+    cursor: pointer;
+}
 
+.thumbnail-image {
+    cursor: pointer;
+}
 
 .mobile{
-    display: none;
-    
+    display: none;   
 }
 
 .mobile-card-container{
@@ -50,14 +57,15 @@
     align-items: center;
     position: relative;
     margin: 10px;
-
 }
+
 .mobile-card-img{
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .mobile-card-details {
     flex: 3;
     margin-left: 20px;

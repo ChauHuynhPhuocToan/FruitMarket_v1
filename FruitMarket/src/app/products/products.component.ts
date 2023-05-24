@@ -4,6 +4,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartItem, CartService } from '../services/cart.service';
 
 
 @Component({
@@ -36,7 +37,7 @@ export class ProductsComponent implements OnInit {
   products: any[] = [];
   default = new Array(6);
   
-  constructor(private router: Router, private productService: ProductService) {
+  constructor(private router: Router, private productService: ProductService, private cartService: CartService) {
     this.dataSource.data = TREE_DATA;
     this.productService.getAllProducts().subscribe(res => {
       this.products = res;
@@ -65,6 +66,10 @@ export class ProductsComponent implements OnInit {
   
   productHome(id: string) {
     this.router.navigate(['../product', id]);
+  }
+
+  addToCart(item: CartItem) {
+    this.cartService.addCart(item, this.cartService.cart);
   }
 
 }

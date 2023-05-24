@@ -4,6 +4,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartItem, CartService } from '../services/cart.service';
 
 
 @Component({
@@ -36,7 +37,10 @@ export class HomeComponent implements OnInit {
   images: any[] = [];
   default = new Array(4);
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, private router: Router, private productService: ProductService, private activeRoute: ActivatedRoute) {
+  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer, 
+              private router: Router, private productService: ProductService,
+              private activeRoute: ActivatedRoute,
+              private cartService: CartService) {
     iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('assets/img/examples/thumbup-icon.svg'));
   }
 
@@ -48,6 +52,10 @@ export class HomeComponent implements OnInit {
 
   productHome(id: string) {
     this.router.navigate(['product/'+id]);
+  }
+
+  addToCart(item: CartItem) {
+    this.cartService.addCart(item, this.cartService.cart);
   }
 
 }
