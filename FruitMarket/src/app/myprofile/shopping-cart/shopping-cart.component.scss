@@ -148,3 +148,17 @@
 	background-color: #4466f2 !important;
 	border-color: #4466f2 !important;
 }
+
+@media (max-width: 1080px) {
+  
+    .cart-total {
+        padding: 10px;
+        min-height: 300px;
+        background: #fff;
+        width: 80vw;
+        margin: 10px 8%;
+        letter-spacing: 2px;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+}

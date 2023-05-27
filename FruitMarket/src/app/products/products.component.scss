@@ -60,15 +60,21 @@ mat-icon {
 }
 
 .mobile-card-img{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    img {
+        max-width: 100px;
+        max-height: 100px;
+    }
 }
 
 .mobile-card-details {
     flex: 3;
     margin-left: 20px;
+}
+
+.mobile-card-footer {
+    button {
+        margin-right: 5px;
+    }
 }
 
 @media (max-width: 1080px) {

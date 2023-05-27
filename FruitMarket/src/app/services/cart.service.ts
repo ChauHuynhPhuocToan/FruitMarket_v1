@@ -2,21 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { discount, shippingCost } from '../AppConst';
+import { CartData } from './model';
 
-export interface CartItem{
-  id: string,
-  image: string[],
-  text: string,
-  price: number,
-  quantity: number,
-  totalPrice: number;
-}
-
-export interface CartData{
-  items: CartItem[],
-  subtotal: number,
-  total: number
-}
 @Injectable({
   providedIn: 'root'
 })

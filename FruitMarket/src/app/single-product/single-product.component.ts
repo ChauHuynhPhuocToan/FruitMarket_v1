@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { CartService } from '../services/cart.service';
+import { CartItem } from '../services/model';
 
 @Component({
   selector: 'app-single-product',
@@ -23,7 +25,7 @@ export class SingleProductComponent implements OnInit {
   
   simillarProducts: any[] = [];
   product: any;
-  constructor(private productService: ProductService, private route: ActivatedRoute) {
+  constructor(private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) {
     this.productService.getSimillarProducts().subscribe(res => {
       this.simillarProducts = res;
     });
@@ -67,5 +69,8 @@ export class SingleProductComponent implements OnInit {
     { value: 'tacos-2', viewValue: 'Large' }
   ];
 
+  addToCart(item: CartItem) {
+    this.cartService.addCart(item, this.cartService.cart);
+  }
 
 }

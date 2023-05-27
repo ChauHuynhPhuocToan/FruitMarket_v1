@@ -69,6 +69,14 @@
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: bold; font-size: 14px;">${{ item.price }}</span>
+                    <div class="quantity" [ngStyle]="{'display': item.quantity && item.quantity > 0 ? 'block' : 'none' }">
+                        <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                            (click)="descreaseQuantity(item)">remove</mat-icon>
+                        <input style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1"
+                            (change)="updateCartItemQuantity($event,item)" [value]="item.quantity" />
+                        <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                            (click)="increaseQuantity(item)">add</mat-icon>
+                    </div>
                     <mat-icon fontSet="material-icons-outlined" (click)="addToCart(item)">shopping_cart</mat-icon>
                 </div>
             </mat-card-content>
@@ -76,27 +84,20 @@
     </div>
 </div>
 
-<div class="mobile" *ngFor="let item of products" (click)="productHome(item.id)">
+<div class="mobile" *ngFor="let item of products">
     <div class="mobile-card-container">
         <div class="mobile-card-img">
-            <!-- <owl-carousel-o [options]="carouselOptions" [items]="item.image">
-                <div class="item" *ngFor="let image of item.image; let i = index">
-                    <div class="thumbnail-image">
-                        <img [src]="image" class="productImg" mat-card-image />
-                    </div>
-                </div>
-            </owl-carousel-o> -->
+            <img [src]="item.image[0]" (click)="productHome(item.id)">
         </div>
         <div class="mobile-card-details">
             <h3>{{item.text}}</h3>
-            <p>$120.00</p>
+            <p>${{item.price}}</p>
         </div>
     </div>
     <div class="mobile-card-footer">
-        <button mat-button mat-stroked-button color="primary" class="button">
+        <button mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(item)">
             ADD TO CART
         </button>
-        <button mat-button>SHARE
-        </button>
+        <button mat-button mat-stroked-button color="primary" class="button" (click)="productHome(item.id)">DETAIL</button>
     </div>
 </div>

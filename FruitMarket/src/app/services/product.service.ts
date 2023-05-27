@@ -12,8 +12,8 @@ export class ProductService {
   constructor(private loadingService: LoadingService, private httpClient: HttpClient) { }
 
 
-  getAllProducts(): Observable<any> {
-    return this.httpClient.get(this.api+"/products");
+  getAllProducts(): Observable<any[]> {
+    return this.httpClient.get(this.api+"/products") as Observable<any[]>; 
   }
 
   getSimillarProducts(): Observable<any> {

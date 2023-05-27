@@ -21,9 +21,6 @@
         <li class="contain" (click)="toggelSidenav()" [routerLink]="['/home']" routerLinkActive="active">
                 <table>
                         <tr>
-                                <td>
-                                        <mat-icon>home</mat-icon>
-                                </td>
                                 <td style="vertical-align: baseline;"><span style="margin-left: 10px;">HOME</span></td>
                         </tr>
                 </table>
@@ -31,11 +28,7 @@
         <li class="contain" (click)="toggelSidenav()" [routerLink]="['/products']" routerLinkActive="active">
                 <table>
                         <tr>
-                                <td>
-                                        <mat-icon>add_to_photos</mat-icon>
-                                </td>
-                                <td style="vertical-align: baseline;"> <span style="margin-left: 10px;">PRODUCTS</span>
-                                </td>
+                                <td style="vertical-align: baseline;"> <span style="margin-left: 10px;">PRODUCTS</span></td>
                         </tr>
                 </table>
         </li>
@@ -45,9 +38,6 @@
                 (click)="toggelSidenav()">
                 <table>
                         <tr>
-                                <td>
-                                        <mat-icon>{{item.icon}}</mat-icon>
-                                </td>
                                 <td style="vertical-align: baseline;">
                                         <span style="margin-left: 10px;">{{item.title}}</span>
                                 </td>
@@ -55,7 +45,7 @@
                 </table>
         </li>
 </ul>
-<ul class="list" *ngIf="user">
+<!-- <ul class="list" *ngIf="user">
         <li *ngFor="let item of myStuff" [routerLink]="[item.link]" routerLinkActive="active" (click)="toggelSidenav()">
                 <table>
                         <tr>
@@ -68,13 +58,10 @@
                         </tr>
                 </table>
         </li>
-</ul>
+</ul> -->
 <div *ngIf="user">
         <table>
                 <tr (click)="logout()">
-                        <td>
-                                <mat-icon>power_settings_new</mat-icon>
-                        </td>
                         <td style="vertical-align: baseline;">
                                 <span style="margin-left: 10px;">Logout</span>
                         </td>

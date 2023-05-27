@@ -38,6 +38,14 @@
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <span style="font-weight: bold; font-size: 14px;">${{item.price}}</span>
+                    <div class="quantity" [ngStyle]="{'display': item.quantity && item.quantity > 0 ? 'block' : 'none' }">
+                        <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                            (click)="descreaseQuantity(item)">remove</mat-icon>
+                        <input style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1"
+                            (change)="updateCartItemQuantity($event,item)" [value]="item.quantity" />
+                        <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                            (click)="increaseQuantity(item)">add</mat-icon>
+                    </div>
                     <mat-icon fontSet="material-icons-outlined" (click)="addToCart(item)">shopping_cart</mat-icon>
                 </div>
             </mat-card-content>

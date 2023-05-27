@@ -4,8 +4,8 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CartItem, CartService } from '../services/cart.service';
-
+import { CartItem } from '../services/model';
+import { CartService } from '../services/cart.service';
 
 @Component({
   selector: 'app-products',
@@ -40,7 +40,28 @@ export class ProductsComponent implements OnInit {
   constructor(private router: Router, private productService: ProductService, private cartService: CartService) {
     this.dataSource.data = TREE_DATA;
     this.productService.getAllProducts().subscribe(res => {
-      this.products = res;
+      if(this.cartService.cart.items != null && this.cartService.cart.items.length > 0){
+        res.forEach(x => {
+          var index = this.cartService.cart.items.findIndex(i => i.id == x.id);
+          this.products.push({
+            id: x.id,
+            image: x.image,
+            text: x.text,
+            price: x.price,
+            quantity: index != -1 ? this.cartService.cart.items[index].quantity : null
+          });
+        });
+      } else {
+        res.forEach(x => {
+          this.products.push({
+            id: x.id,
+            image: x.image,
+            text: x.text,
+            price: x.price,
+            quantity: null
+          });
+        });
+      }
     });
   }
 
@@ -70,6 +91,29 @@ export class ProductsComponent implements OnInit {
 
   addToCart(item: CartItem) {
     this.cartService.addCart(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  increaseQuantity(item: any){
+    this.cartService.cart = this.cartService.addCart(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  descreaseQuantity(item: any){
+    this.cartService.cart = this.cartService.decreaseCartQuantity(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  updateCartItemQuantity(event: any, item: any) {
+    this.cartService.cart = this.cartService.updateCartItem(item, this.cartService.cart, event.target.value);
+    this.updateQuantityItem(item.id);
+  }
+
+  updateQuantityItem(id: string) {
+    var index = this.products.findIndex(x => x.id == id);
+    var itemIndex = this.cartService.cart.items.findIndex(x => x.id == id);
+    this.products[index].quantity = this.cartService.cart.items[itemIndex].quantity;
+    this.products = [...this.products];
   }
 
 }
