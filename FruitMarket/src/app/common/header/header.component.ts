@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
 
   loadingEnable: boolean = false;
   sidenavEnable = false;
-  user: User = { mobileNumber: '' };
+  user: any = null;
 
   @Output()
   sidenav = new EventEmitter();
@@ -50,10 +50,11 @@ export class HeaderComponent implements OnInit {
     });
 
   }
+  
   logout() {
-    this.user = { mobileNumber: '' };
-
+    this.user = null;
     this.loginService.loggedIn.next(this.user);
+    console.log(this.user);
     this.router.navigate(['home']);
   }
 }

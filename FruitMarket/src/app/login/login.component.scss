@@ -1,9 +1,13 @@
 .example-container {
-    display: flex;
-    flex-direction: column;
-    width: 280px;
-  }
+  display: flex;
+  flex-direction: column;
+}
   
-  .example-container > * {
-    width: 100%;
-  }
+.example-container > * {
+  width: 100%;
+}
+
+form {
+  width: 50vh;
+  padding: 10px 20px;
+}

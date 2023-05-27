@@ -12,7 +12,8 @@ import { SavedCardsComponent } from './myprofile/saved-cards/saved-cards.compone
 import { WishlistComponent } from './myprofile/wishlist/wishlist.component';
 import { MyRewardsComponent } from './myprofile/my-rewards/my-rewards.component';
 import { NotificationsComponent } from './myprofile/notifications/notifications.component';
-import {AuthService } from './services/auth-service';
+import { AuthService } from './services/auth-service';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,10 @@ const routes: Routes = [
   {
     path: 'shopping-cart',
     component: ShoppingCartComponent
+  },
+  {
+    path: 'contact-us',
+    component: ContactUsComponent
   },
   {
     path: 'myprofile',

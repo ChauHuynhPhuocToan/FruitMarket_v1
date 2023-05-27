@@ -6,7 +6,7 @@ import { User } from '../interfaces/Ilogin';
   providedIn: 'root'
 })
 export class LoginService {
-  user: User = { mobileNumber: '' };
+  user: any = null;
   loggedIn = new BehaviorSubject(this.user);
   constructor() { }
 

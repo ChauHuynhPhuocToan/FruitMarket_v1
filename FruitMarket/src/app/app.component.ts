@@ -25,12 +25,8 @@ export class AppComponent {
       link: '/products'
     },
     {
-      title: 'images',
-      link: ''
-    },
-    {
       title: 'contact-us',
-      link: ''
+      link: '/contact-us'
     }
   ];
 

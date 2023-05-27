@@ -56,6 +56,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 // const skltnConfig: SkltnConfig = {
 //   rectRadius: 10,
@@ -82,7 +83,8 @@ import { AppComponent } from './app.component';
     MyRewardsComponent,
     ReviewsRatingComponent,
     NotificationsComponent,
-    WishlistComponent
+    WishlistComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

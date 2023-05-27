@@ -7,3 +7,11 @@
     </div>
   </div>
 </owl-carousel-o> -->
+
+<owl-carousel-o [options]="carouselOptions">
+  <ng-template class="carousel" carouselSlide *ngFor="let image of images; let i = index">
+      <div class="thumbnail-image">
+          <img [src]="image.image"/>
+      </div>
+  </ng-template>
+</owl-carousel-o>

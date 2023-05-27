@@ -10,6 +10,5 @@ export class HomeService {
   constructor(private httpClient: HttpClient) { }
   getBanners(): Observable<any> {
     return this.httpClient.get(this.api+"/banner");
-    
   }
 }

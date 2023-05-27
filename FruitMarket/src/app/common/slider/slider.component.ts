@@ -12,22 +12,20 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class SliderComponent implements OnInit {
   carouselOptions: OwlOptions = 
     {
-      animateOut: 'bounceOutRight',
-      animateIn: 'bounceInLeft',
       items: 1, 
-      dots: true, 
-      loop:true,
+      loop: true,
+      autoplay: true,
+      center: true,
+      dots: false,
+      autoHeight: true,
+      autoWidth: true,
       margin:10,
-      autoplay:true,
-    //  animateOut: 'fadeOut',
-      autoHeight: true
+      animateIn: 'bounceInLeft',
+      animateOut: 'fadeOut'
   }
   
  
-  images = [
-    
-   
-  ];
+  images: any[] = [];
  
   constructor(private homeService: HomeService) { 
     this.homeService.getBanners().subscribe(res => {

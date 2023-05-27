@@ -77,12 +77,14 @@ export class SidenavComponent implements OnInit {
     this.toggelSidenav();
     this.router.navigate(['myprofile']);
   } 
+
   logout() {
     this.toggelSidenav();
     this.user = { mobileNumber: '' };
     this.loginService.loggedIn.next(this.user);
     this.router.navigate(['home']);
   }
+  
   openLoginDialog(): void {
     this.toggelSidenav();
     const dialogRef = this.dialog.open(LoginComponent, {});
