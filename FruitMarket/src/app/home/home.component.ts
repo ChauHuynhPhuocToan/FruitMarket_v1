@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
             image: x.image,
             text: x.text,
             price: x.price,
-            quantity: index != -1 ? this.cartService.cart.items[index].quantity : null
+            quantity: index != -1 ? this.cartService.cart.items[index].quantity : 0
           });
         });
       } else {
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
             image: x.image,
             text: x.text,
             price: x.price,
-            quantity: null
+            quantity: 0
           });
         });
       }
@@ -100,7 +100,7 @@ export class HomeComponent implements OnInit {
   updateQuantityItem(id: string) {
     var index = this.images.findIndex(x => x.id == id);
     var itemIndex = this.cartService.cart.items.findIndex(x => x.id == id);
-    this.images[index].quantity = this.cartService.cart.items[itemIndex].quantity;
+    this.images[index].quantity = itemIndex != -1 ? this.cartService.cart.items[itemIndex].quantity : 0;
     this.images = [...this.images];
   }
 

@@ -24,6 +24,7 @@
         </div>
         <br>
         <div class="filters">
+            Price range
             <mat-slider
             style="width: 100%;"
             class="example-margin"
@@ -96,7 +97,7 @@
     </div>
     <div class="mobile-card-footer">
         <button mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(item)">
-            ADD TO CART
+            ADD TO CART ({{item.quantity}})
         </button>
         <button mat-button mat-stroked-button color="primary" class="button" (click)="productHome(item.id)">DETAIL</button>
     </div>

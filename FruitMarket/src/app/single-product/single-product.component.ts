@@ -30,7 +30,24 @@ export class SingleProductComponent implements OnInit {
       this.simillarProducts = res;
     });
     this.productService.getSingleProduct(Number(this.route.snapshot.params['id'])).subscribe(res => {
-      this.product = res;
+      if(this.cartService.cart.items != null && this.cartService.cart.items.length > 0){
+          var index = this.cartService.cart.items.findIndex(i => i.id == res.id);
+          this.product = {
+            id: res.id,
+            image: res.image,
+            price: res.price,
+            text: res.text,
+            quantity: index != -1 ? this.cartService.cart.items[index].quantity : 0
+          };
+      } else {
+        this.product = {
+          id: res.id,
+          image: res.image,
+          price: res.price,
+          text: res.text,
+          quantity: 0
+        };
+      }
     });
   }
 
@@ -71,6 +88,27 @@ export class SingleProductComponent implements OnInit {
 
   addToCart(item: CartItem) {
     this.cartService.addCart(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  increaseQuantity(item: any){
+    this.cartService.cart = this.cartService.addCart(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  descreaseQuantity(item: any){
+    this.cartService.cart = this.cartService.decreaseCartQuantity(item, this.cartService.cart);
+    this.updateQuantityItem(item.id);
+  }
+
+  updateCartItemQuantity(event: any, item: any) {
+    this.cartService.cart = this.cartService.updateCartItem(item, this.cartService.cart, event.target.value);
+    this.updateQuantityItem(item.id);
+  }
+
+  updateQuantityItem(id: string) {
+    var itemIndex = this.cartService.cart.items.findIndex(x => x.id == id);
+    this.product.quantity = itemIndex != -1 ? this.cartService.cart.items[itemIndex].quantity : 0;
   }
 
 }

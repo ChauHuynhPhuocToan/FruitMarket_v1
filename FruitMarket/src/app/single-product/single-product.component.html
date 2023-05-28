@@ -49,6 +49,15 @@
             <button mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(product)">
                 ADD TO CART
             </button>
+
+            <div class="quantity" [ngStyle]="{'display': product.quantity && product.quantity > 0 ? 'flex' : 'none' }">
+                <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                    (click)="descreaseQuantity(product)">remove</mat-icon>
+                <input style="height: 20px; margin-right: 5px; text-align: center;" type="text" size="1"
+                    (change)="updateCartItemQuantity($event,product)" [value]="product.quantity" />
+                <mat-icon fontSet="material-icons-outlined" class="close-icon"
+                    (click)="increaseQuantity(product)">add</mat-icon>
+            </div>
         </div>
 
 
@@ -138,7 +147,7 @@
             <mat-card-content>
                 <h3 style="margin: 0; font-weight: normal;">{{item.text}}</h3>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <span style="font-weight: bold; font-size: 14px;">$120.00</span>
+                    <span style="font-weight: bold; font-size: 14px;">${{item.quantity}}</span>
                     <mat-icon fontSet="material-icons-outlined">shopping_cart</mat-icon>
                 </div>
             </mat-card-content>

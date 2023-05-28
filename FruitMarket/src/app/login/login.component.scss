@@ -8,6 +8,18 @@
 }
 
 form {
-  width: 50vh;
+  width: 30vw;
   padding: 10px 20px;
 }
+
+@media (max-width: 1080px) {
+  form {
+    width: 90vw;
+    padding: 10px 10px;
+  }
+
+  .example-container {
+    width: 80% !important;
+  }
+}
+
