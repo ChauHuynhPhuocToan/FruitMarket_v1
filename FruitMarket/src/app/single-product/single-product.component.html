@@ -46,9 +46,11 @@
             <!-- <button mat-button mat-raised-button color="primary" class="buy-now-button space">BUY NOW
             </button> -->
 
-            <button mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(product)">
-                ADD TO CART
-            </button>
+            <div class="button-container">
+                <button mat-button mat-stroked-button color="primary" class="button" (click)="addToCart(product)">
+                    ADD TO CART
+                </button>
+            </div>
 
             <div class="quantity" [ngStyle]="{'display': product.quantity && product.quantity > 0 ? 'flex' : 'none' }">
                 <mat-icon fontSet="material-icons-outlined" class="close-icon"
